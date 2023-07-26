@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import {ValidateComponent} from './validate/validate.component';
+
+const routes: Routes = [
+  {path:'validate',component:ValidateComponent},
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

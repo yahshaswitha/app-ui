@@ -1,0 +1,33 @@
+<div class="col m-5" [formGroup]="addForm">
+  <div class="input-group mb-3 w-50">
+    <label class="input-group-text" for="inputGroupFile01">Upload File</label>
+    <input type="file" class="form-control" id="inputGroupFile01" (change)="upload($event)">
+  </div>  
+  <div class="form-group">
+    <div class="col-auto m-3">
+      <button (click)="onAddRow()" class="btn btn-primary">Add Validation</button>
+    </div>
+    <div class="row mb-3 align-bottom" style="flex-direction:row"
+      *ngFor="let row of addDynamicRow?.controls; let index = index;">
+      <div class="col-auto">
+        <label for="autoSizingInput">Column Number</label>
+        <input type="number" class="form-control" [formControl]="row.get('colNum')" placeholder="Column Number"
+          required>
+      </div>
+      <div class="col-auto w-25">
+        <label for="autoSizingSelect">Validation Type</label>
+        <select class="form-select" id="autoSizingSelect" [formControl]="row.get('type')" required>
+          <option value="1">Number</option>
+          <option value="2">Text</option>
+          <option value="3">Email</option>
+        </select>
+      </div>
+      <div class="col-auto justify-content-center align-items-center">
+        <button class=" btn btn-danger py-auto" (click)="onRemoveRow(index)">Remove</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-auto m-3">
+    <button (click)="onSubmit()" class="btn btn-primary">Submit</button>
+  </div>
+</div>
